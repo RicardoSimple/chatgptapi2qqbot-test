@@ -1,1 +1,1 @@
-key = "你的openai密钥"
+key = "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"

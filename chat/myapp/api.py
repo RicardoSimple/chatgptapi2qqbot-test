@@ -7,7 +7,12 @@ openai_secret_key = key
 
 @api_view(['GET','POST'])
 def chat_api(request):
-    message = request.GET['msg']
+    message = ''
+    if request.method == 'GET':
+        message = request.GET['msg']
+    if request.method == 'POST':
+        message = request.POST['msg']
+
     print(message)
     headers = {
         'Content-Type': 'application/json',
@@ -19,6 +24,7 @@ def chat_api(request):
         "temperature": 0.7
     }
     response = requests.post('https://api.openai.com/v1/chat/completions', headers=headers, json=data)
+    print(response.text)
     response_data = response.json()
     text = response_data["choices"][0]
     return Response({'text': text})
