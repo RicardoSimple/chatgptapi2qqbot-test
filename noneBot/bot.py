@@ -1,5 +1,5 @@
 import nonebot
-from nonebot.adapters.console import Adapter as ConsoleAdapter  # 避免重复命名
+from nonebot.adapters.onebot.v11 import Adapter as ONEBOT_V11Adapter  # 避免重复命名
 
 
 # 初始化 NoneBot
@@ -7,8 +7,9 @@ nonebot.init()
 
 
 # 注册适配器
+app = nonebot.get_asgi()
 driver = nonebot.get_driver()
-driver.register_adapter(ConsoleAdapter)
+driver.register_adapter(ONEBOT_V11Adapter)
 
 
 # 在这里加载插件
